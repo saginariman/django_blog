@@ -1,0 +1,47 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{% static 'main/css/main.css' %}">
+    <script src="https://kit.fontawesome.com/bff7e194ea.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <aside id="menu">
+        <img src="{% static 'main/img/icon.png' %}" alt="">
+        <span class="logo">Django WebSite</span>
+        <h3>Menu</h3>
+        <ul>
+            <a href="{% url 'home' %}"><li><i class="fas fa-home"></i> Главная</li></a>
+            <a href="{% url 'about' %}"><li><i class="fas fa-address-card"></i> Про нас</li></a>
+            <a href=""><li><i class="fas fa-paper-plane"></i>Контакты</li></a>
+            <a href="{% url 'news_home' %}"><li><i class="fas fa-paper-plane"></i>Новости</li></a>
+            <a href="{% url 'create' %}"><li><button class="btn btn-info text-center">+ запись</button></li></a>
+        </ul>
+    </aside>
+
+    <main>
+        <i class="fas fa-bars" onclick="showMenu()"></i>
+        {% block content %}
+
+        {% endblock %}
+    </main>
+
+    <script type="text/javascript">
+        function showMenu(){
+            var module = document.getElementById("menu");
+            if(module.style.display == "block"){
+                module.style.display = "none";
+            }else{
+                module.style.display = "block";
+            }
+        }
+    </script>
+</body>
+</html>

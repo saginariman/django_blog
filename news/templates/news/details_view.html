@@ -1,0 +1,15 @@
+{% extends 'main/layouts.html' %}
+
+{% block title %}{{ acticle.title }}{% endblock %}
+
+{% block content %}
+    <div class="features">
+        <div class="alert alert-warning">
+            <h1>{{ acticle.title }}</h1>
+            <p>{{ acticle.date }}</p>
+            <p>{{ acticle.full_text }}</p>
+            <a href="{% url 'news-delete' acticle.id %}" class="btn btn-danger">Удалить</a>
+            <a href="{% url 'news-update' acticle.id %}" class="btn btn-info">Редактировать</a>
+        </div>
+    </div>
+{% endblock %}
